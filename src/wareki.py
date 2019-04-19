@@ -6,12 +6,20 @@ import re
 
 class Wareki:
 
+    """
+    A class which wraps around a datetime object (dt), extending functionality
+    to work with the traditional Japanese calendar format as well as Japanese time and date formats
+    """
+
     def __init__(self, dt=None):
         if dt is None:
             dt = date.fromtimestamp(0)
         self.dt = dt
 
     def __str__(self):
+        """
+        :return: Returns the string representation of the wrapped datetime object
+        """
         return str(self.dt)
 
     def era(self):
@@ -25,7 +33,7 @@ class Wareki:
         for era in eras:
             if self.dt.date() >= era.start:
                 return era
-        return self.ERAS[-1]
+        return eras[-1]
 
     def era_year(self, gannen=False):
         greg_year = self.dt.year
@@ -65,8 +73,4 @@ class Wareki:
 
 if __name__ == "__main__":
     test = Wareki(datetime.now())
-    # print(str(test.era().kanji))
-    # print(str(test.era_year()))
-    # test2 = Wareki(datetime(2019, 5, 1))
-    # print(str(test2.era_year(True)))
     print(test.strftime("%@EE%@N年%-m月%d日 (%@A)\n%-H時%M分%S秒"))
