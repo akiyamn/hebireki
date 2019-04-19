@@ -3,6 +3,10 @@ from datetime import date
 
 class Era:
 
+    """
+    A small class describing a Japanese era
+    """
+
     def __init__(self, kanji, english, start, end):
         self.kanji = kanji
         self.english = english

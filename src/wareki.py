@@ -23,6 +23,11 @@ class Wareki:
         return str(self.dt)
 
     def era(self):
+        """
+        :return: the Japanese era (as an instance of Era) of the given datetime
+        """
+
+        # A hard-coded list of Japanese eras
         eras = [
             Era("令和", "Reiwa", date(2019, 5, 1), None),
             Era("平成", "Heisei", date(1989, 8, 1), date(2019, 4, 30)),
@@ -30,12 +35,18 @@ class Wareki:
             Era("大正", "Taisho", date(1912, 7, 30), date(1926, 12, 24)),
             Era("明治", "Meiji", date(1867, 2, 3), date(1912, 7, 29)),
         ]
+
+        # Find the latest era which started before the datetime
         for era in eras:
             if self.dt.date() >= era.start:
                 return era
         return eras[-1]
 
     def era_year(self, gannen=False):
+        """
+        :param gannen: (default=False) use the tradition of using the kanji "元" instead of "1" for the first year
+        :return: the year within the Japanese era of the datetime
+        """
         greg_year = self.dt.year
         japan_year = greg_year - self.era().start.year + 1
         if gannen:
@@ -43,8 +54,25 @@ class Wareki:
         else:
             return japan_year
 
-    def strftime(self, format_spec):
-        modifier = "%@"
+    def strftime(self, format_spec, modifier="%@"):
+        """
+        A wrapper on top of datetime.strftime() which implements a number of Japanese formatting options for
+        dates and times. The prefix symbol is given by "modifier" and by default is "%@".
+
+        The list of symbols are as follows:
+            E       Short kanji representation of the era (E.g. 平)
+            EE      Full kanji representation of the era (E.g. 平成)
+            e       Short romanised representation of the era (E.g. H)
+            ee      Full kanji representation of the era (E.g. Heisei)
+            n       The year within the era (E.g. 31 for 2019)
+            N       The year within the era, using gannen (E.g. 元 for Mar 1 2019)
+            a       Short kanji representation of the day of the week (金 for Friday)
+            A       Full kanji representation of the day of the week (金曜日 for Friday)
+
+        :param format_spec: The strftime string to be formatted
+        :param modifier: (default="%@") the prefix to each symbol (as to not conflict with normal strftime)
+        :return: the result of the above strftime conversions on top of regular strftime
+        """
         code_conversion = {
             "E": self.era().short_kanji,
             "EE": self.era().kanji,
@@ -64,13 +92,20 @@ class Wareki:
         return new_string
 
     def kanji_weekday(self):
+        """
+        :return: A short kanji representation of the day of the week
+        """
         weekdays = ["日", "月", "火", "水", "木", "金", "土"]
         return weekdays[self.dt.weekday()]
 
     def full_kanji_weekday(self):
+        """
+        :return: A full kanji representation of the day of the week
+        """
         return self.kanji_weekday() + "曜日"
 
 
+# Testing cases
 if __name__ == "__main__":
     test = Wareki(datetime.now())
     print(test.strftime("%@EE%@N年%-m月%d日 (%@A)\n%-H時%M分%S秒"))
