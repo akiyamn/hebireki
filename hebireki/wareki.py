@@ -62,14 +62,14 @@ class Wareki:
         dates and times. The prefix symbol is given by "modifier" and by default is "%@".
 
         The list of symbols are as follows:
-            E       Short kanji representation of the era (E.g. 平)
-            EE      Full kanji representation of the era (E.g. 平成)
-            e       Short romanised representation of the era (E.g. H)
-            ee      Full kanji representation of the era (E.g. Heisei)
-            n       The year within the era (E.g. 31 for 2019)
-            N       The year within the era, using gannen (E.g. 元 for Mar 1 2019)
-            a       Short kanji representation of the day of the week (金 for Friday)
-            A       Full kanji representation of the day of the week (金曜日 for Friday)
+        |    E       Short kanji representation of the era (E.g. 平)
+        |    EE      Full kanji representation of the era (E.g. 平成)
+        |    e       Short romanised representation of the era (E.g. H)
+        |    ee      Full kanji representation of the era (E.g. Heisei)
+        |    n       The year within the era (E.g. 31 for 2019)
+        |    N       The year within the era, using gannen (E.g. 元 for Mar 1 2019)
+        |    a       Short kanji representation of the day of the week (金 for Friday)
+        |    A       Full kanji representation of the day of the week (金曜日 for Friday)
 
         :param format_spec: The strftime string to be formatted
         :param modifier: (default="%@") the prefix to each symbol (as to not conflict with normal strftime)
