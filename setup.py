@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 import setuptools
+from .hebireki import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name='hebireki',
-    version='0.2.1',
-    packages=setuptools.find_packages(),
+    version=__version__,
+    packages=["hebireki"],
     url='https://github.com/akiyamn/hebireki',
     license='WTFPLv2',
     author='akiyamn',

@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.<br />
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.2 - 2019-4-25
+### Fixed
+- PyPI not installing packages with the right name using when using `pip`
 ## 0.2.1 - 2019-4-25
 ### Fixed
 - Metadata not being packaged with PyPI
