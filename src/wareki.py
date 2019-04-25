@@ -24,7 +24,7 @@ class Wareki:
 
     def __init__(self, dt=None):
         if dt is None:
-            dt = date.fromtimestamp(0)
+            dt = datetime.now()
         self.dt = dt
 
     def __str__(self):
