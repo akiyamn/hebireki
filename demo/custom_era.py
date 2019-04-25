@@ -1,4 +1,4 @@
-from src import *
+from hebireki import *
 from datetime import *
 
 if __name__ == "__main__":

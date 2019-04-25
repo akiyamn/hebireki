@@ -1,4 +1,4 @@
-import src.wareki as wa
+import hebireki.wareki as wa
 from datetime import datetime
 
 if __name__ == "__main__":

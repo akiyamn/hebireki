@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from datetime import *
-from era import *
+from .era import *
 import string
 import re
 
