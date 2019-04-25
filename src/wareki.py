@@ -13,6 +13,15 @@ class Wareki:
     to work with the traditional Japanese calendar format as well as Japanese time and date formats
     """
 
+    # A hard-coded list of Japanese eras
+    eras = [
+        Era("令和", "Reiwa", datetime(2019, 5, 1), None),  # A 'None' as an end date means it's the current era
+        Era("平成", "Heisei", datetime(1989, 8, 1), datetime(2019, 4, 30)),
+        Era("昭和", "Showa", datetime(1926, 12, 25), datetime(1989, 1, 7)),
+        Era("大正", "Taisho", datetime(1912, 7, 30), datetime(1926, 12, 24)),
+        Era("明治", "Meiji", datetime(1867, 2, 3), datetime(1912, 7, 29)),  # Eras before Meiji were not well defined
+    ]
+
     def __init__(self, dt=None):
         if dt is None:
             dt = date.fromtimestamp(0)
@@ -20,29 +29,20 @@ class Wareki:
 
     def __str__(self):
         """
-        :return: Returns the string representation of the wrapped datetime object
+        :return: Returns a string representation using the Japanese calendar format of the date and time with kanji
         """
-        return str(self.dt)
+        return str(self.strftime("%@EE%@N年%-m月%d日 (%@A) %-H時%M分%S秒"))
 
     def era(self):
         """
         :return: the Japanese era (as an instance of Era) of the given datetime
         """
 
-        # A hard-coded list of Japanese eras
-        eras = [
-            Era("令和", "Reiwa", date(2019, 5, 1), None),
-            Era("平成", "Heisei", date(1989, 8, 1), date(2019, 4, 30)),
-            Era("昭和", "Showa", date(1926, 12, 25), date(1989, 1, 7)),
-            Era("大正", "Taisho", date(1912, 7, 30), date(1926, 12, 24)),
-            Era("明治", "Meiji", date(1867, 2, 3), date(1912, 7, 29)),
-        ]
-
         # Find the latest era which started before the datetime
-        for era in eras:
-            if self.dt.date() >= era.start:
+        for era in self.eras:
+            if self.dt >= era.start:
                 return era
-        return eras[-1]
+        return self.eras[-1]
 
     def era_year(self, gannen=False):
         """
