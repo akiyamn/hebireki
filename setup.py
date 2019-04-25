@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import setuptools
-from .hebireki import __version__
+from hebireki import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
