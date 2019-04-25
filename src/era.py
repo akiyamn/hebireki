@@ -4,7 +4,7 @@ from datetime import date
 class Era:
 
     """
-    A small class describing a Japanese era
+    A small data class describing a Japanese era
     """
 
     def __init__(self, kanji, english, start, end):

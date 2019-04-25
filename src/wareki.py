@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from datetime import *
 from era import *
 import string
@@ -103,9 +105,3 @@ class Wareki:
         :return: A full kanji representation of the day of the week
         """
         return self.kanji_weekday() + "曜日"
-
-
-# Testing cases
-if __name__ == "__main__":
-    test = Wareki(datetime.now())
-    print(test.strftime("%@EE%@N年%-m月%d日 (%@A)\n%-H時%M分%S秒"))
