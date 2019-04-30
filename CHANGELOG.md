@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.<br />
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.3 - 2019-4-30
+### Fixed
+- Weekdays provided by `Wareki.weekday()` and `Wareki.full_weekday()` being off by one,
+returning the weekday before the correct one
 ## 0.2.2 - 2019-4-25
 ### Fixed
 - PyPI not installing packages with the right name using when using `pip`
