@@ -9,5 +9,3 @@ A lightweight wrapper around Python's inbuilt datetime package, implementing tra
 This package is Reiwa safe and is built with extensibility and simplicity in mind.
 
 Hosted at: [https://github.com/akiyamn/hebireki](https://github.com/akiyamn/hebireki)
-
-Hosted at: [https://github.com/akiyamn/hebireki](https://github.com/akiyamn/hebireki)
