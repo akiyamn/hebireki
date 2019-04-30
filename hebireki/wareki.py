@@ -97,7 +97,7 @@ class Wareki:
         """
         :return: A short kanji representation of the day of the week
         """
-        weekdays = ["日", "月", "火", "水", "木", "金", "土"]
+        weekdays = ["月", "火", "水", "木", "金", "土", "日"]
         return weekdays[self.dt.weekday()]
 
     def full_kanji_weekday(self):
